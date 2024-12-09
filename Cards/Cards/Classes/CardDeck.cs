@@ -2,6 +2,6 @@
 {
     public class CardDeck
     {
-        public IEnumerable<Card> Cards { get; set; } = [];
+        public List<Card> Cards { get; set; } = [];
     }
 }

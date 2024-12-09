@@ -1,19 +1,5 @@
 ﻿namespace EjSmith.Cards.Classes
 {
-    public enum Suit
-    {
-        Clubs,
-        Spades,
-        Diamonds,
-        Hearts
-    }
-
-    public enum Color
-    {
-        Black,
-        Red
-    }
-
     public enum CardValue
     {
         Two = 2,
@@ -33,9 +19,8 @@
 
     public class Card
     {
-        public Color Color { get; set; }
-        public Suit Suit { get; set; }
+        public Suit Suit { get; set; } = new Suit();
         public CardValue Value { get; set; }
-        public string Name => $"{Value} of {Suit}";
+        public string Name { get { return $"{Value} of {Suit.Name}"; } }
     }
 }
