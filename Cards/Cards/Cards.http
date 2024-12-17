@@ -1,4 +1,4 @@
-@Cards_HostAddress = http://localhost:32770
+@Cards_HostAddress = https://localhost:32769
 
 GET {{Cards_HostAddress}}/api/carddeck/
 Accept: application/json

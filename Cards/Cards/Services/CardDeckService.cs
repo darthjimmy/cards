@@ -8,20 +8,41 @@ namespace EjSmith.Cards.Services
 
         public CardDeckService()
         {
-            defaultDeck = new CardDeck();
-
-            foreach (Suit suit in Suit.Suits)
-            {
-                defaultDeck.Cards.Add(new() { Suit = suit, Value = CardValue.Two });
-                defaultDeck.Cards.Add(new() { Suit = suit, Value = CardValue.Three });
-                defaultDeck.Cards.Add(new() { Suit = suit, Value = CardValue.Four });
-
-            }
+            defaultDeck = CreateDeck();
         }
 
         public IEnumerable<CardDeck> GetDecks()
         {
             return [defaultDeck];
+        }
+
+        // Fisher-Yates shuffle
+        public CardDeck Shuffle(CardDeck deck)
+        {
+            Random rnd = new();
+            int n = deck.Cards.Count;
+            for (int i = n - 1; i > 0; i--)
+            {
+                int j = rnd.Next(i + 1);
+                (deck.Cards[j], deck.Cards[i]) = (deck.Cards[i], deck.Cards[j]);
+            }
+
+            return deck;
+        }
+
+        private static CardDeck CreateDeck()
+        {
+            var deck = new CardDeck();
+
+            foreach (Suit suit in Suit.Suits)
+            {
+                for (var num = 2; num <= 14; num++)
+                {
+                    deck.Cards.Add(new Card { Suit = suit, Value = (CardValue)num });
+                }
+            }
+
+            return deck;
         }
     }
 }
