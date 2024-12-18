@@ -17,10 +17,18 @@
         Ace = 14,
     }
 
+    public enum Suit
+    {
+        Clubs,
+        Spades,
+        Diamonds,
+        Hearts
+    }
+
     public class Card
     {
         public Suit Suit { get; set; } = new Suit();
         public CardValue Value { get; set; }
-        public string Name { get { return $"{Value} of {Suit.Name}"; } }
+        public string Name { get { return $"{Value} of {Suit}"; } }
     }
 }

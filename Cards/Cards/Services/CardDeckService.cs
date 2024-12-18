@@ -13,32 +13,35 @@ namespace EjSmith.Cards.Services
 
         public IEnumerable<CardDeck> GetDecks()
         {
-            return [defaultDeck];
+            return [defaultDeck, Shuffle(defaultDeck)];
         }
 
         // Fisher-Yates shuffle
         public CardDeck Shuffle(CardDeck deck)
         {
+            CardDeck result = new();
+            result.Cards.AddRange(deck.Cards);
+
             Random rnd = new();
-            int n = deck.Cards.Count;
+            int n = result.Cards.Count;
             for (int i = n - 1; i > 0; i--)
             {
                 int j = rnd.Next(i + 1);
-                (deck.Cards[j], deck.Cards[i]) = (deck.Cards[i], deck.Cards[j]);
+                (result.Cards[j], result.Cards[i]) = (result.Cards[i], result.Cards[j]);
             }
 
-            return deck;
+            return result;
         }
 
         private static CardDeck CreateDeck()
         {
             var deck = new CardDeck();
 
-            foreach (Suit suit in Suit.Suits)
+            foreach (Suit suit in Enum.GetValues<Suit>())
             {
-                for (var num = 2; num <= 14; num++)
+                foreach (CardValue num in Enum.GetValues<CardValue>())
                 {
-                    deck.Cards.Add(new Card { Suit = suit, Value = (CardValue)num });
+                    deck.Cards.Add(new Card { Suit = suit, Value = num });
                 }
             }
 
