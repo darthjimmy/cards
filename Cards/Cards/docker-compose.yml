@@ -1,0 +1,25 @@
+﻿services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: cards
+      MYSQL_USER: cardsuser
+      MYSQL_PASSWORD: cards123
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  app:
+    image: cards
+    build:
+      context: .
+    ports:
+      - "32768:8080"
+      - "32769:8081" 
+    depends_on:
+      - db
+
+volumes:
+  db_data:
