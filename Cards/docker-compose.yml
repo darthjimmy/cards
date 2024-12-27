@@ -1,4 +1,12 @@
-﻿services:
+services:
+  cards:
+    image: ${DOCKER_REGISTRY-}cards
+    build:
+      context: .
+      dockerfile: Cards/Dockerfile
+    depends_on:
+      - db
+
   db:
     image: mysql:latest
     environment:
@@ -11,15 +19,5 @@
     volumes:
       - db_data:/var/lib/mysql
 
-  app:
-    image: cards
-    build:
-      context: .
-    ports:
-      - "32768:8080"
-      - "32769:8081" 
-    depends_on:
-      - db
-
 volumes:
-  db_data:
+  db_data: 
