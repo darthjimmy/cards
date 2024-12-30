@@ -11,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 builder.Services.AddSingleton<ICardDeckService, CardDeckService>();
+builder.Services.AddTransient<IRoomService, RoomService>();
 
 // Configure appsettings.json
 builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);

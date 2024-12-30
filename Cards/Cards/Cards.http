@@ -4,3 +4,8 @@ GET {{Cards_HostAddress}}/api/carddeck/
 Accept: application/json
 
 ###
+
+GET {{Cards_HostAddress}}/api/room/
+Accept: application/json
+
+###

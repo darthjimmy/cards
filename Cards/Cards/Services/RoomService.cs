@@ -8,7 +8,6 @@ namespace EjSmith.Cards.Services
     {
         private readonly CardGameContext _context = context;
 
-        /// <inheritdoc/>
         public async Task AddPlayerToRoom(string roomId, Player player)
         {
             var room = _context.Rooms.Include(r => r.Players).FirstOrDefault(r => r.Id == roomId);
@@ -20,7 +19,6 @@ namespace EjSmith.Cards.Services
             }
         }
 
-        /// <inheritdoc/>
         public async Task<string> CreateRoom()
         {
             var room = new Room()
@@ -34,10 +32,14 @@ namespace EjSmith.Cards.Services
             return room.Id;
         }
 
-        /// <inheritdoc/>
         public async Task<Room> GetRoom(string roomId)
         {
             return await _context.Rooms.FirstAsync(r => r.Id == roomId);
+        }
+
+        public async Task<IEnumerable<Room>> GetAllRooms()
+        {
+            return await _context.Rooms.ToListAsync();
         }
     }
 }

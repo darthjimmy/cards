@@ -18,10 +18,16 @@ namespace EjSmith.Cards.Services
         public Task AddPlayerToRoom(string roomId, Player player);
 
         /// <summary>
-        /// Gets player from room <paramref name="roomId"/>.
+        /// Gets room <paramref name="roomId"/>.
         /// </summary>
         /// <param name="roomId">The room id to retrieve.</param>
         /// <returns>The requested room.</returns>
         public Task<Room> GetRoom(string roomId);
+
+        /// <summary>
+        /// Gets all rooms.
+        /// </summary>
+        /// <returns>An <see cref="IEnumerable{T}"/> containing all rooms.</returns>
+        public Task<IEnumerable<Room>> GetAllRooms();
     }
 }

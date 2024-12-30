@@ -27,6 +27,7 @@
 
     public class Card
     {
+        public int Id { get; set; }
         public Suit Suit { get; set; } = new Suit();
         public CardValue Value { get; set; }
         public string Name { get { return $"{Value} of {Suit}"; } }
