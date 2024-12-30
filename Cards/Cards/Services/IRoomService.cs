@@ -8,7 +8,7 @@ namespace EjSmith.Cards.Services
         /// Creates a room.
         /// </summary>
         /// <returns>The room id.</returns>
-        public Task<string> CreateRoom();
+        public Task<Room> CreateRoom();
 
         /// <summary>
         /// Adds player <paramref name="player"/> to the given room <paramref name="roomId"/>.

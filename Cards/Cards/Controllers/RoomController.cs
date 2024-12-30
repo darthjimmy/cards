@@ -13,5 +13,11 @@ namespace EjSmith.Cards.Controllers
         {
             return await roomService.GetAllRooms();
         }
+
+        [HttpPost]
+        public async Task<Room> CreateRoom()
+        {
+            return await roomService.CreateRoom();
+        }
     }
 }

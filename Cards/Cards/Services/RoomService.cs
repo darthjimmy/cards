@@ -19,17 +19,21 @@ namespace EjSmith.Cards.Services
             }
         }
 
-        public async Task<string> CreateRoom()
+        public async Task<Room> CreateRoom()
         {
+            var id = Guid.NewGuid();
+            var idString = id.ToString();
+
             var room = new Room()
             {
-                Id = new Guid().ToString()
+                Id = idString,
+                Name = $"Room {idString.Substring(idString.Length - 6)}"
             };
 
             await _context.Rooms.AddAsync(room);
             await _context.SaveChangesAsync();
 
-            return room.Id;
+            return room;
         }
 
         public async Task<Room> GetRoom(string roomId)

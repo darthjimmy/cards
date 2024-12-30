@@ -9,3 +9,9 @@ GET {{Cards_HostAddress}}/api/room/
 Accept: application/json
 
 ###
+
+POST {{Cards_HostAddress}}/api/room
+Accept: application/json
+Content-Type: application/json
+
+###
