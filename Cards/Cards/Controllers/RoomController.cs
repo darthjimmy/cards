@@ -19,5 +19,11 @@ namespace EjSmith.Cards.Controllers
         {
             return await roomService.CreateRoom();
         }
+
+        [HttpPost("{roomId}/players")]
+        public async Task AddPlayer(string roomId, [FromBody] Player player)
+        {
+            await roomService.AddPlayerToRoom(roomId, player);
+        }
     }
 }

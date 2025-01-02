@@ -1,5 +1,7 @@
 @Cards_HostAddress = https://localhost:32769
 
+### 
+
 GET {{Cards_HostAddress}}/api/carddeck/
 Accept: application/json
 
@@ -15,3 +17,10 @@ Accept: application/json
 Content-Type: application/json
 
 ###
+
+POST {{Cards_HostAddress}}/api/room/7e7bc5f3-9f01-41b3-8e0c-4593444aa485/players
+Content-Type: application/json
+
+{
+  "id": ""
+}

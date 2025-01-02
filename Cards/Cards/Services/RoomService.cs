@@ -27,7 +27,7 @@ namespace EjSmith.Cards.Services
             var room = new Room()
             {
                 Id = idString,
-                Name = $"Room {idString.Substring(idString.Length - 6)}"
+                Name = $"Room {idString[^6..]}"
             };
 
             await _context.Rooms.AddAsync(room);
