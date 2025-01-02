@@ -1,0 +1,23 @@
+services:
+  cards:
+    image: ${DOCKER_REGISTRY-}cards
+    build:
+      context: .
+      dockerfile: Cards/Dockerfile
+    depends_on:
+      - db
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: cards
+      MYSQL_USER: cardsuser
+      MYSQL_PASSWORD: cards123
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data: 
