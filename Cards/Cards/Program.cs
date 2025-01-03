@@ -12,6 +12,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddSingleton<ICardDeckService, CardDeckService>();
 builder.Services.AddTransient<IRoomService, RoomService>();
+builder.Services.AddTransient<IPlayerService, PlayerService>();
 
 // Configure appsettings.json
 builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
